@@ -1,40 +1,27 @@
-#mainDiv {
-  width: 70%;
+.container {
+  text-align: center;
 }
-
-#firstInput,
-#secondInput {
-  font-size: 17px;
-  border: 1px solid grey;
-  background: #f1f1f1;
+.container-left {
+  text-align: left;
 }
-
-#secondInput {
+#logoImg {
+  margin-top: 10px;
 }
-
+#middle-row {
+  margin-top: 5%;
+  display: inline-block;
+}
 #submitBtn {
-  width: 20%;
-  padding: 10;
-  margin: 20px;
-  background: #2196f3;
-  color: white;
-  font-size: 17px;
-  border: 1px solid grey;
-  border-left: none; /* Prevent double borders */
-  cursor: pointer;
+  width: 150px;
+  background-color: #14a17e;
 }
 
-#submitDiv {
-  max-width: 50%;
-  display: inline;
+.stats-box {
+  margin-left: 10px;
+  width: 55%;
+  left: 50px;
 }
 
-#ulList {
-  float: left;
-  list-style-type: none;
-}
-
-#ulList2 {
-  list-style-type: none;
-  float: right;
+.match-entry {
+  border-left: 2px solid #4caf50;
 }

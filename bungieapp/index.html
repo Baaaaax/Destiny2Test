@@ -2,37 +2,85 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <title>Your Website</title>
   </head>
 
   <body>
-    <header>
-      <nav>
-        <ul>
-          <li>Your menu</li>
-        </ul>
-      </nav>
-    </header>
-
     <section>
-    <div id="mainDiv">
-      <div id="submitDiv">
-        <input type="text" name="fInp" autocomplete="on" id="firstInput" />
-        <input type="text" name ="sInp" autocomplete="on" id="secondInput" />
+      <div class="container">
+        <div id="middle-row">
+          <div id="logo">
+            <img
+              src="https://ballzbeatz.com/wp-content/uploads/2018/01/Destiny-Logo-Decal-Sticker.jpg"
+              alt="logo"
+              width="120"
+              height="120"
+              id="logoImg"
+            />
+          </div>
+
+          <form>
+            <input
+              type="text"
+              id="firstInput"
+              placeholder="First Username.."
+              name="search"
+            /><br /><br />
+
+            <input
+              type="text"
+              id="secondInput"
+              placeholder="Second Username.."
+              name="search"
+            />
+          </form>
+          <button type="submit" id="submitBtn" value="Submit">Go!</button>
+        </div>
       </div>
-      <div>
-<button type="submit" id="submitBtn" />
-      </div>
-    
-      <div id="listPlayerDiv">
-        <ul id="ulList"></ul>
-        <ul id="ulList2"></ul>
-      </div>
-    </div>
     </section>
 
-    <script src="./script.js"></script>
+    <section>
+      <div class="container-left">
+      <div class="stats-box">
+          <div id="match-list">
+            <div class="match-entry">
+              <div class="entryIcon">
+                <img src="" alt="enrtyicon" />
+              </div>
+              <span>
+                <div class="details">
+                  <span class="title">Control - Quickplay</span>
+                  <span class="subtitle">Pacifica - 01-01-2019</span>
+                </div>
+            </div>
+            <div class="match-entry">
+              <div class="entryIcon">
+                <img src="" alt="enrtyicon" />
+              </div>
+              <span>
+                <div class="details">
+                  <span class="title">Control - Quickplay</span>
+                  <span class="subtitle">Pacifica - 01-01-2019</span>
+                </div>
+            </div>
+            <div class="match-entry">
+              <div class="entryIcon">
+                <img src="" alt="enrtyicon" />
+              </div>
+              <span>
+                <div class="details">
+                  <span class="title">Control - Quickplay</span>
+                  <span class="subtitle">Pacifica - 01-01-2019</span>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    </section>
 
+    <script src="serversidefetch.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
