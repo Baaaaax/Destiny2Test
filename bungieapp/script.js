@@ -1,5 +1,7 @@
-var input = document.querySelector("#searchInput");
+var firstInput = document.querySelector("#firstInput");
+var secondInput = document.querySelector("#secondInput");
 var submitBtn = document.querySelector("#submitBtn");
+
 var settings = {
   method: "GET",
   headers: {
@@ -7,10 +9,13 @@ var settings = {
   }
 };
 
-function createLiAndA(name, link) {
+function createLiAndA(name, link, teamMateBool) {
   var li = document.createElement("li");
-  document.querySelector("#ulList").appendChild(li);
-  //create A
+  if (teamMateBool) {
+    document.querySelector("#ulList").appendChild(li);
+  } else {
+    document.querySelector("#ulList2").appendChild(li);
+  }
 
   var a = document.createElement("a");
   a.setAttribute("href", link);
@@ -20,26 +25,28 @@ function createLiAndA(name, link) {
   li.appendChild(a);
 }
 
+///////////////////////////////////////////////////////////////////////////
+
 function getMembershipId(name) {
+  var newName = encodeURIComponent(name);
+
   var fetchUrl =
-    "https://www.bungie.net/Platform/Destiny2/SearchDestinyPlayer/-1/" +
-    name +
+    "https://www.bungie.net/Platform/Destiny2/SearchDestinyPlayer/4/" +
+    newName +
     "/";
+
   fetch(fetchUrl, settings)
     .then(r => {
       return r.json();
     })
     .then(res => {
-      console.log(res.Response[0].membershipId);
-
-      console.log(res.Response);
       return getProfile(res.Response[0].membershipId);
     });
 }
 
 function getProfile(id) {
   var fetchUrl =
-    "https://www.bungie.net/Platform/Destiny2/2/Profile/" +
+    "https://www.bungie.net/Platform/Destiny2/4/Profile/" +
     id +
     "/?components=100";
   fetch(fetchUrl, settings)
@@ -65,7 +72,7 @@ function getActivityHistory(membType, destinyMembershipId, characterId) {
     destinyMembershipId +
     "/Character/" +
     characterId +
-    "/Stats/Activities/?page=5";
+    "/Stats/Activities/?count=40&mode=32";
 
   fetch(fetchUrl, settings)
     .then(r => {
@@ -73,8 +80,9 @@ function getActivityHistory(membType, destinyMembershipId, characterId) {
     })
     .then(res => {
       console.log(res);
-      return getPostGameCarnageReport(
-        res.Response.activities[0].activityDetails.instanceId
+
+      res.Response.activities.forEach(element =>
+        getPostGameCarnageReport(element.activityDetails.instanceId)
       );
     });
 }
@@ -90,14 +98,26 @@ function getPostGameCarnageReport(activityId) {
       return r.json();
     })
     .then(res => {
-      var playersArr = JSON.parse(JSON.stringify(res.Response.entries));
-      playersArr.forEach(element => {
+      console.log(res);
+
+      res.Response.entries.forEach(element => {
         createLiAndA(
           element.player.destinyUserInfo.displayName,
-          "https://www.google.it/"
+          "https://www.google.it/",
+          element.standing == 0
         );
+        //checking if is in the enemy team
+        if (element.standing == 1) {
+          compareIfPlayed(element.player.destinyUserInfo.membershipId, secId);
+        }
       });
     });
 }
 
-submitBtn.addEventListener("click", () => getMembershipId(input.value));
+function compareIfPlayed(firstId, secondId) {
+  if (firstId == secondId) {
+    console.log("played tog");
+  }
+}
+
+submitBtn.addEventListener("click", () => getMembershipId("bax#21629"));

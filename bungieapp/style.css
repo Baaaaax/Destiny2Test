@@ -1,18 +1,21 @@
 #mainDiv {
-  width: 50%;
+  width: 70%;
 }
 
-#searchInput {
+#firstInput,
+#secondInput {
   font-size: 17px;
   border: 1px solid grey;
-  width: 80%;
   background: #f1f1f1;
 }
 
+#secondInput {
+}
+
 #submitBtn {
-  float: right;
   width: 20%;
-  padding: 10px;
+  padding: 10;
+  margin: 20px;
   background: #2196f3;
   color: white;
   font-size: 17px;
@@ -22,10 +25,16 @@
 }
 
 #submitDiv {
-  max-width: 20%;
+  max-width: 50%;
+  display: inline;
 }
 
 #ulList {
   float: left;
   list-style-type: none;
+}
+
+#ulList2 {
+  list-style-type: none;
+  float: right;
 }
