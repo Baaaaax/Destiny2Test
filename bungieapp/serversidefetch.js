@@ -110,17 +110,11 @@ function getPostGameCarnageReport(activityId, secId) {
 
       //foreach person in the match create a link and do the check if they played togheter
       res.Response.entries.forEach(element => {
-        createLiAndA(
-          element.player.destinyUserInfo.displayName,
-          "https://www.google.it/",
-          element.standing == standing
-        );
         //checking if is in the enemy team
         if (element.standing != standing) {
-          //checking if someone in the other team is the second name given
+          //checking if someone in the enemy team is the second input value given
           if (element.player.destinyUserInfo.membershipId == secId) {
             console.log("played");
-            createEntryMatch(element.player.destinyUserInfo.membershipId);
           }
         }
       });
